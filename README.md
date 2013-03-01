@@ -34,12 +34,13 @@ Les exemples et situations sont tirés de plus d'1 an de plusieurs projets sur l
 1. Zombie.js
 	1. 20 min de slides
 	1. 25 min de démo
-1. Casper.js
+1. Phamtom.js / Casper.js
 	1. 20 min de slides
 	1. 25 min de démo
 1. Testacular
 	1. 20 min de slides
 	1. 25 min de démo
 1. Les autres outils 20-25 minutes
+2. Outils de coverage
 1. les tendances
 1. Wrapup
