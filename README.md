@@ -41,6 +41,14 @@ Les exemples et situations sont tirés de plus d'1 an de plusieurs projets sur l
 	1. 20 min de slides
 	1. 25 min de démo
 1. Les autres outils 20-25 minutes
+	1. buster.js
+	2. sinon.js
 2. Outils de coverage
 1. les tendances
 1. Wrapup
+
+
+## Todo
+* choisir un soft de presentation
+* valider avec les gugus de devoxx qu'on a le droit de faire du impress.js
+
