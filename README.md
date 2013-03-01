@@ -43,6 +43,10 @@ Les exemples et situations sont tirés de plus d'1 an de plusieurs projets sur l
 1. Les autres outils 20-25 minutes
 	1. buster.js
 	2. sinon.js
+	3. chai.js
+	4. mocha
+	5. qunit
+	6. jasmine
 2. Outils de coverage
 1. les tendances
 1. Wrapup
@@ -51,4 +55,5 @@ Les exemples et situations sont tirés de plus d'1 an de plusieurs projets sur l
 ## Todo
 * choisir un soft de presentation
 * valider avec les gugus de devoxx qu'on a le droit de faire du impress.js
+* Trouver une appli de démonstration
 
