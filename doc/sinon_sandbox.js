@@ -93,33 +93,43 @@ spy.withArgs("some text").calledOnce; // returns true
 
 // fake server
 
-this.server = sinon.fakeServerWithClock.create();
-server.respondWith([200, { "Content-Type": "text/plain" },"hello dolly"]);
+var server = sinon.fakeServerWithClock.create();
+server.respondWith("GET", "/",
+    [200, { "Content-Type": "text/plain" }, "fake response"]);
 var spy = sinon.spy();
 
 $.get("/").then(spy);
 server.respond();
 
-spy.calledOnce;
-spy.withArgs("hello dolly").calledOnce;
+spy.calledOnce;  // returns true
+spy.withArgs("fake response").calledOnce; // returns true
 
 
+// sandbox
 
+var sandbox = sinon.sandbox.create();
 
+sandbox.useFakeTimers();
+sandbox.useFakeServer();
+// all code from there uses fake timer and server.
+
+// [...]
+
+sandbox.restore();
+// original behaviour is now restored.
+
+// using sinon in qunit test
+test("sinon adapter should work", function () {
+
+    var stub = this.stub();
+    stub.returns("stubbed");
+
+    var result = stub();
+
+    equal(result, "stubbed", "result value should be stubbed");
+    ok(stub.calledOnce, "spy should have been called once");
+});
 
 
 ////////////////////////
 // more advanced exemple :
-
-"test should call method once with each argument": function () {
-    var object = { method: function () {} };
-    var spy = sinon.spy(object, "method");
-    spy.withArgs(42);
-    spy.withArgs(1);
-
-    object.method(42);
-    object.method(1);
-
-    assert(spy.withArgs(42).calledOnce);
-    assert(spy.withArgs(1).calledOnce);
-}
