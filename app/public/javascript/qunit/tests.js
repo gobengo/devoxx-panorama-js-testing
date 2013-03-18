@@ -2,11 +2,8 @@
 
 module("Devoxx");
 
-test("greaterThan plugin should test if number is greater than given minimum", function(assert) {
-
-    var value = 5;
-
-    assert.greaterThan(value, 3, "value should be greater than 3");
-
-
+test("testing that 5 should be greater 3", function(assert) {
+    var five = 5;
+    var three = 3;
+    assert.greaterThan(five, three, "5 should be greater than 3");
 });
