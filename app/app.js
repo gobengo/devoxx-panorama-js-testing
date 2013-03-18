@@ -14,9 +14,15 @@ app.set('view engine', 'ejs');
 
 // routes
 
+// index
 app.get('/', function(req, res) {
-    res.render('index', { title: '' });
+    res.render('index');
 });
+// qunit page
+app.get('/qunit', function(req, res) {
+    res.render('qunit');
+});
+
 
 var server = app.listen(PORT);
 
