@@ -1,6 +1,26 @@
 
-// test
+module("Hello.World");
 
+test("universe should agree", function() {
+    ok(42==42, "probably true");
+});
+
+module("JS.Troll");
+
+test("equality should be trolling material", function() {
+    equal('\n\r\t' , 0, "a whitespace string is equal to zero");
+});
+
+test("transitivity should be trolling material", function() {
+
+    equal(0, "");
+    equal(0, "0");
+    notEqual("", "0");
+});
+
+
+
+// test
 
 test("true should be equals to true and different that false", function() {
 
