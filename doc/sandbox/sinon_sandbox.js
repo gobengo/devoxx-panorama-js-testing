@@ -23,14 +23,37 @@ spy.withArgs("dolly").called // return false
 
 var stub = sinon.stub();
 
-stub.returnsArg(0);
-stub.withArgs("hello").returns(1);
-stub.withArgs("throw").throws("YouMadeMeDoThisError");
+stub.returns("stubbed");
+stub.withArgs("hello").returnsArg(0);
+stub.withArgs("throw").throws("Woups");
 
-stub();         // returns undefined
-stub("dolly");  // returns "dolly"
-stub("hello");  // returns 1
-stub("throw");  // throws YouMadeMeDoThisError
+stub();         // returns "stubbed"
+stub("dolly");  // returns "stubbed"
+stub("hello");  // returns "hello"
+stub("throw");  // throws Woups
+
+// this work too
+stub.withArgs("hello").calledOnce;
+stub.threw("Woups"); // returns true
+
+
+// replacing existing methods :
+
+var stuff = {
+    work : function() { return "ok";}
+};
+
+// replacing object method with a stub
+var stub = sinon.stub(stuff, "work");
+
+stub.returns("stubbed");
+
+stub(); // returns "stubbed"
+greeter.greet(); // this works too
+
+stub.restore(); // original method restored
+stuff.work(); // return "ok" again
+
 
 // mock
 
