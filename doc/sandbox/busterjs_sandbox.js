@@ -119,11 +119,11 @@ config["My tests"] = {
     ],
     resources: [           // list of server resources available to tests.
     	{ 
-    		path: "/todo-items", 
+    		path: "/todo-items",    // proxy resource to remote server
     		backend: "http://localhost:8000/todo/todo-items" 
     	},
     	{
-	        path: "/user.json",
+	        path: "/user.json",     // mocked resource
 	        content: JSON.stringify({ id: 1, name: "Christian" }),
 	        headers: { "Content-Type": "application/json" }
         }
@@ -131,3 +131,30 @@ config["My tests"] = {
 };
 
 
+// feature requirement
+
+buster.testCase("My thing", {
+    requiresSupportFor: {
+        "touch events": typeof(document.body.ontouchstart) != "undefined",
+        "XHR": typeof(XMLHttpRequest) != "undefined"
+    },
+
+    "touch events should trigger an ajax call": function () {
+        // ..
+    }
+
+});
+
+// deferred test
+
+buster.testCase("projet.deferred", {
+
+    "this test will be executed": function () {
+        assert(true);
+    },
+
+    "// this test will not appear but not launch": function () {
+        assert(false);
+    }
+
+});
