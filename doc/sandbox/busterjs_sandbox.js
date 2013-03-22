@@ -103,15 +103,21 @@ basé sur NPM;
 
 config["My tests"] = {
     env: "browser",        // or "node"
+    extensions: [require("buster-coverage")], // adding the coverage extension
+    "buster-coverage": {
+        outputDirectory: "coverage_reports"  // any plugin config
+    },
     rootPath: "../",
-    sources: [
-        "lib/mylib.js",    // Paths are relative to config file
-        "lib/**/*.js"      // Glob patterns supported
+    libs : [               // list of libs to use for tests
+        "lib/jquery.js", "lib/underscore.js"
     ],
-    tests: [
+    sources: [             // list of source files
+        "sources/**/*.js"  // Glob patterns supported
+    ],
+    tests: [               // List of test files.
         "test/*-test.js"
     ],
-    resources: [
+    resources: [           // list of server resources available to tests.
     	{ 
     		path: "/todo-items", 
     		backend: "http://localhost:8000/todo/todo-items" 
