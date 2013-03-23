@@ -39,9 +39,6 @@ casper.thenClick("#panier a", function() {
 });
 
 
-
-
-
 casper.run(function() {
     this.test.done();
 });
