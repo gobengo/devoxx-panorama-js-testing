@@ -110,6 +110,23 @@ asyncTest("element should be hidden after animation", function() {
 
 });
 
+asyncTest("stuff and remote work loading", function() {
+
+    var stuff = new Stuff();
+    ok(!stuff.readyToWork);
+
+    $.get("/some/work/url", function(work) {
+
+        stuff.loadWork(work);
+
+        ok(stuff.readyToWork);
+
+        start(); // telling the test to start.
+    });
+
+});
+
+
 
 
 test("another test about view dom rendering", function() {
