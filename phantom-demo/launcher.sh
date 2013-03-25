@@ -3,6 +3,7 @@
 #--includes=foo.js,bar.js \
 #--pre=pre-test.js \
 #--post=post-test.js \
+# --remote-debugger-port=9000
 
 casperjs test --includes=includes.js \
               --direct \
