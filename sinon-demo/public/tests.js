@@ -14,27 +14,25 @@ test("Client should have a server and no drinks when arriving in the bar", funct
 
 // yell - spies / mock.
 
-// TODO : refactor : orderBeer instead of yell.
-
-test("Server should do nothing client on yell if not busy", function() {
+test("Client should be able to order a beer only if server is available", function() {
 
     var server = new Server();
-    this.spy(server, "goToTable");
+    this.spy(server, "serveBeer");
 
     var client = new Client(null, {server : server});
 
-    client.yell();
+    client.orderBeer();
 
-    ok(server.goToTable.withArgs(client.get("tableId")).calledOnce);
+    ok(server.serveBeer.calledOnce);
+    equal(server.serveBeer.firstCall.returnValue, "beer");
 
-    server.goToTable.reset();
 
-    var stub = this.stub(server, "isBusy");
-    stub.returns(true);
+    this.stub(server, "isBusy").returns(true);
 
-    client.yell();
+    client.orderBeer();
 
-    ok(!server.goToTable.withArgs(client.get("tableId")).called);
+    ok(server.serveBeer.calledTwice, "should be called two times.");
+    ok(server.serveBeer.getCall(1).threw());
 
 });
 
@@ -43,9 +41,9 @@ test("Server should do nothing client on yell if not busy", function() {
 test("Client should go to the toilet after the third beer", function() {
 
     var server = new Server();
-    this.spy(server, "goToTable");
 
     var client = new Client(null, {server : server});
+
     this.spy(client, "goToBathRoom");
 
     client.orderBeer();
@@ -61,7 +59,7 @@ test("Client should go to the toilet after the third beer", function() {
 
 // Fake Clock.
 
-asyncTest("(qunit) Client can go to the bathroom", function() {
+asyncTest("(qunit) Client stay in the bathroom for a given duration", function() {
 
     var server = new Server();
 
@@ -82,7 +80,7 @@ asyncTest("(qunit) Client can go to the bathroom", function() {
 
 });
 
-test("(sinon) Client can go to the bathroom", function() {
+test("(sinon) Client stay in the bathroom for a given duration", function() {
 
     this.clock = this.sandbox.useFakeTimers();
 

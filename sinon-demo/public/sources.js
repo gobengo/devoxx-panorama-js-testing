@@ -12,25 +12,20 @@ Server = Backbone.Model.extend({
         this.currentTable = null;
     },
 
-    onClientYell : function(client) {
+    serveBeer : function() {
         if(this.isBusy()) {
-            return;
+            throw "ImBusyException"
         }
-        this.goToTable(client.get("tableId"));
+        return "beer";
     },
 
     isBusy : function() {
         return false;
     },
 
-    goToTable : function(tableId) {
-        this.currentTable = tableId;
-    },
-
     manageClient : function(client) {
         this.clients.push(client);
         client.on("request:bill", this.getBill, this);
-        client.on("yell", this.onClientYell, this);
     },
 
     getBill : function(client) {
@@ -52,9 +47,14 @@ Client =  Backbone.Model.extend({
     },
 
     orderBeer : function() {
-        this.drinks.push("beer");
-        if(this.drinks.length % 3 == 0) {
-            this.goToBathRoom();
+        try {
+            var beer = this.server.serveBeer();
+            this.drinks.push(beer);
+            if(this.drinks.length % 3 == 0) {
+                this.goToBathRoom();
+            }
+        } catch(e) {
+            console.log("damn server, always busy.")
         }
     },
 
