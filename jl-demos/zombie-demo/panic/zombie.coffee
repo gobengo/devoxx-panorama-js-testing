@@ -46,11 +46,8 @@ describe 'serpodile', ->
 							browser.authenticate().basic "test", "test"
 							browser.visit "#{home}orders.html", ->
 								browser.text("tr:nth-child(1) > td:nth-child(2)").should.equal '9.0 €'
-								#browser.evaluate('$("table#orderTable > tbody > tr:nth-child(1) > td").click()')
-								browser.fire 'click','table#orderTable > tbody > tr:nth-child(1) > td', ->
-								# browser.wait 1000, ->
-									console.log browser.query("#quoi > tr > td:nth-child(1)")
-									browser.viewInBrowser()
+								browser.evaluate('$("table#orderTable > tbody > tr:nth-child(1) > td").click()')
+								browser.wait 1000, ->
 									browser.text(".product_title").should.equal 'Mon Cahier 7 mm'
 									done()
 
