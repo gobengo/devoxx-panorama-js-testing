@@ -1,6 +1,4 @@
-/**
- * Class - base class object.
- */
+
 var Class = function() {
     this.initialize && this.initialize.apply(this, arguments);
 };
@@ -8,20 +6,21 @@ _.extend(Class.prototype, Backbone.Events);
 Class.extend = Backbone.Model.extend;
 
 
+
 ONE_MINUTE = 1;// 1000 * 60;
 
 
 Server = Class.extend({
+
+    isBusy : function() {
+        return /* deep logic, but - */false;
+    },
 
     takeBeerOrderFrom : function(client) {
         if(this.isBusy()) {
             return;
         }
         return this.serveBeer(client);
-    },
-
-    isBusy : function() {
-        return /* deep logic, but - */false;
     },
 
     serveBeer : function(client) {
