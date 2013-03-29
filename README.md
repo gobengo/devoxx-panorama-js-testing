@@ -1,6 +1,5 @@
 # Panorama des outils de tests JS
 
-
 ## Pitch
 
 ### Title
@@ -20,40 +19,3 @@ Les exemples et situations sont tirés de plus d'1 an de plusieurs projets sur l
 ### Meta
 
 3h, Université, Audience Sénior, En Français
-
-
-
-## Proposed Schedule
-
-1. Welcome hello, salux, Qui on est pourquoi on est là pub xebia studio tout ca toutca 20 min
-1. Plan des 3 h
-1. Need for testing !
-1. Difference between unit & acceptance
-1. Parlons de [goos](http://www.growing-object-oriented-software.com/) un peu
-1. Pourquoi ces outils là
-1. Zombie.js
-	1. 20 min de slides
-	1. 25 min de démo
-1. Phamtom.js / Casper.js
-	1. 20 min de slides
-	1. 25 min de démo
-1. Testacular
-	1. 20 min de slides
-	1. 25 min de démo
-1. Les autres outils 20-25 minutes
-	1. buster.js
-	2. sinon.js
-	3. chai.js
-	4. mocha
-	5. qunit
-	6. jasmine
-2. Outils de coverage
-1. les tendances
-1. Wrapup
-
-
-## Todo
-* choisir un soft de presentation
-* valider avec les gugus de devoxx qu'on a le droit de faire du impress.js
-* Trouver une appli de démonstration
-
