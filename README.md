@@ -19,3 +19,5 @@ Les exemples et situations sont tirés de plus d'1 an de plusieurs projets sur l
 ### Meta
 
 3h, Université, Audience Sénior, En Français
+
+Jean-Laurent de Morlhon & Pierre Gayvalet
