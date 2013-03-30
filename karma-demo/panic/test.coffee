@@ -13,8 +13,5 @@ describe 'devoxx karma demo', ->
 		input('query').enter 'cobol'
 		expect(repeater('.languages li').count()).toBe 1	
 
-	# Do it with the pause
+	# Demonstrate the above with a pause() function
 
-	it 'should check the right url is set', ->
-		browser().navigateTo '/'
-		expect(element('title').text()).toBe 'Hello Devoxx'
