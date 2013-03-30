@@ -3,32 +3,32 @@ Browser = require('zombie')
 
 home = 'http://localhost:8080/'
 
-describe 'serpodile', ->
+describe 'devoxx serpodile demo', ->
 
-	it 'should check the homepage is up', (done) ->
+	it 'should be live', (done) ->
 		browser = new Browser()
 		browser.visit home, ->
-			browser.success.should.be.true
+			browser.text('title').should.contain 'Boutique Serpodile'
 			done()
 
-	it 'should check the title', (done) ->
+	it 'should add a product to the basket', (done) ->
 		browser = new Browser()
 		browser.visit home, ->
-			browser.text('title').should.have.string 'Boutique Serpodile.'
-			done()
-
-	it 'should add a product in the basket when clicked', (done) ->
-		browser = new Browser()
-		browser.visit home, ->
-			browser.clickLink "#mon-cahier-7", ->
+			browser.clickLink '#mon-cahier-5', ->
 				browser.text('#nb-article').should.equal '1 article'
-				browser.cookies().get("serpodile_cart").should.have.string 'mon-cahier-7'
+				done()
+
+	it 'should add a product to the cookie', (done) ->
+		browser = new Browser()
+		browser.visit home, ->
+			browser.clickLink '#mon-cahier-5', ->
+				browser.cookies().get('serpodile_cart').should.contain 'mon-cahier-5'
 				done()
 
 	it 'should order a product', (done) ->
 		browser = new Browser()
 		browser.visit home, ->
-			browser.clickLink '#mon-cahier-7', ->
+			browser.clickLink '#mon-cahier-5', ->
 				browser.clickLink 'Panier', ->
 					browser.clickLink '.btn_valider', ->
 						browser.fill("prenom", "Headless")
@@ -48,6 +48,5 @@ describe 'serpodile', ->
 								browser.text("tr:nth-child(1) > td:nth-child(2)").should.equal '9.0 €'
 								browser.evaluate('$("table#orderTable > tbody > tr:nth-child(1) > td").click()')
 								browser.wait 1000, ->
-									browser.text(".product_title").should.equal 'Mon Cahier 7 mm'
+									browser.text(".product_title").should.equal 'Mon Cahier 5 mm'
 									done()
-
